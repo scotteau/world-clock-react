@@ -2,65 +2,56 @@ import React from "react";
 import moment from "moment-timezone";
 
 interface myProps {
-  city?: string;
+  city: string;
 }
 
-interface myState {}
+interface myState {
+  dateDisplay: string;
+  timeDisplay: string;
+}
 
 class Clock extends React.Component<myProps, myState> {
-  state = { time: new Date(), date: new Date() };
+  state = { dateDisplay: "", timeDisplay: "" };
   timer: any;
 
   renderTime() {
-    const display = this.state.time
-      .toLocaleTimeString("en-US", { hour12: false })
-      .split(":");
+    const display = this.state.timeDisplay.split(":");
     return display.map((d, index) => <span key={index}>{d}</span>);
-  }
-
-  renderDate() {
-    const options = {
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    };
-    const date = this.state.time
-      .toLocaleDateString("en-US", options)
-      .split(",");
-    return date.map((d, index) => <span key={index}>{d}</span>);
   }
 
   render(): React.ReactNode {
     return (
       <div>
-        {this.renderDate()}
-        {this.renderTime()}
+        <p>{this.props.city}</p>
+        <p>{this.state.dateDisplay}</p>
+        <p>{this.renderTime()}</p>
       </div>
     );
   }
 
   determineTimezone(city: string) {
-    if (city && city!=='') {
+    if (city && city !== "") {
       const name = moment.tz.names().filter((name) => name.includes(city));
-      const time = moment.tz( name[0]);
+      const result = moment.tz(name[0]);
+      const wholeDate = result.format().split("T");
 
-      const options = {weekday: 'short', month:'short', day: 'numeric', year: 'numeric'};
+      const time = wholeDate[1].slice(0, 8);
+      const date = new Date(wholeDate[0]).toDateString();
 
-      console.log(time.format());
+      this.setState({ dateDisplay: date });
+      this.setState({ timeDisplay: time });
     }
   }
 
   updateTime(): void {
     this.timer = setInterval(() => {
-      this.setState({ time: new Date() });
+      this.determineTimezone(this.props.city);
     }, 1000);
   }
 
   componentDidMount(): void {
     this.updateTime();
-    this.determineTimezone("Perth");
-  //  todo: find a way to format the string to normal date time string
+    this.determineTimezone(this.props.city);
   }
 
   componentWillUnmount(): void {
