@@ -13,7 +13,6 @@ ReactDOM.render(
             <Clock city={"New York"} />
             <Clock city={"London"} />
             <Clock city={"Melbourne"} />
-            <Clock city={"Wuhan"} />
             <Clock city={"Milan"} />
         </div>
     </div>,
