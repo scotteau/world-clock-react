@@ -1,62 +1,89 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .clock {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid red;
-    width: 300px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  min-width: 300px;
+  max-width: 300px;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  margin: 20px;
 }
 
 .clock__title {
-    border: 1px solid green;
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  font-weight: 500;
 }
 
 .clock__body {
-    border: 1px solid blue;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 200px;
-    width: 100%;
-    justify-content: center;
-    background: lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 220px;
+  width: 100%;
+  justify-content: center;
+  box-shadow: 0 0px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  position: relative;
+  border-radius: 3px;
 }
 
 .clock__body__date {
-    width: 100%;
-    text-align: center;
-    background: lightblue;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background: #4c00d5;
+  color: white;
+  position: absolute;
+  top: 0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .clock__body__time {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 25px;
 }
 
 span:empty {
-    display: none;
+  display: none;
 }
 
 .colon {
-    margin: 0 20px;
+  margin: 0 14px;
+  color: black;
 }
 
 .digit {
-    background: orange;
-    color: white;
-    padding: 10px;
+  background: #4b00d1;
+  color: white;
+  padding: 18px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-weight: 500;
 }
-
-
-
-
-

@@ -16,12 +16,15 @@ class Clock extends React.Component<myProps, myState> {
 
   renderTime() {
     const display = this.state.timeDisplay.split(":");
-    return display.map((d,index) => {
-
+    return display.map((d, index) => {
       return [
-        <span className={"digit"} key={index}>{d}</span>,
-        <span className={'colon'} key={`colon${index}`}>{index<2?':':''}</span>
-      ]
+        <span className={"digit"} key={index}>
+          {d}
+        </span>,
+        <span className={"colon"} key={`colon${index}`}>
+          {index < 2 ? ":" : ""}
+        </span>,
+      ];
     });
   }
 
@@ -49,20 +52,19 @@ class Clock extends React.Component<myProps, myState> {
     this.updateTime();
     this.determineTimezone(this.props.city);
   }
-
   componentWillUnmount(): void {
     clearInterval(this.timer);
   }
 
   render(): React.ReactNode {
     return (
-        <div className={'clock'}>
-          <h3 className={"clock__title"}>{this.props.city}</h3>
+      <div className={"clock"}>
+        <h3 className={"clock__title"}>{this.props.city}</h3>
+        <div className={"clock__body"}>
           <p className={"clock__body__date"}>{this.state.dateDisplay}</p>
-          <div className={"clock__body"}>
-            <p className={"clock__body__time"}>{this.renderTime()}</p>
-          </div>
+          <p className={"clock__body__time"}>{this.renderTime()}</p>
         </div>
+      </div>
     );
   }
 }
