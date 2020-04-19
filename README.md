@@ -1,6 +1,6 @@
 # World Clock
 
-[Click here to see it live(coming soon)]()
+[Click here to see it live](https://world-clock-react.scotteau.now.sh/)
 
 A React class component exercise built with `typescript` and `moment.js timezone`.
 
