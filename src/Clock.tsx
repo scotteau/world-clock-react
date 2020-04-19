@@ -30,7 +30,11 @@ class Clock extends React.Component<myProps, myState> {
 
   determineTimezone(city: string) {
     if (city && city !== "") {
-      const name = moment.tz.names().filter((name) => name.includes(city));
+      const name = moment.tz.names().filter((name) => name.includes(city.replace(' ', '_')));
+
+      if (name.length!==1){
+        console.warn(`${city} is not found, its clock is not the real local time.`);
+      }
       const result = moment.tz(name[0]);
       const wholeDate = result.format().split("T");
 
