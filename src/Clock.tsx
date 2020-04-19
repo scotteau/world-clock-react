@@ -16,17 +16,13 @@ class Clock extends React.Component<myProps, myState> {
 
   renderTime() {
     const display = this.state.timeDisplay.split(":");
-    return display.map((d, index) => <span key={index}>{d}</span>);
-  }
+    return display.map((d,index) => {
 
-  render(): React.ReactNode {
-    return (
-      <div>
-        <p>{this.props.city}</p>
-        <p>{this.state.dateDisplay}</p>
-        <p>{this.renderTime()}</p>
-      </div>
-    );
+      return [
+        <span className={"digit"} key={index}>{d}</span>,
+        <span className={'colon'} key={`colon${index}`}>{index<2?':':''}</span>
+      ]
+    });
   }
 
   determineTimezone(city: string) {
@@ -56,6 +52,18 @@ class Clock extends React.Component<myProps, myState> {
 
   componentWillUnmount(): void {
     clearInterval(this.timer);
+  }
+
+  render(): React.ReactNode {
+    return (
+        <div className={'clock'}>
+          <h3 className={"clock__title"}>{this.props.city}</h3>
+          <p className={"clock__body__date"}>{this.state.dateDisplay}</p>
+          <div className={"clock__body"}>
+            <p className={"clock__body__time"}>{this.renderTime()}</p>
+          </div>
+        </div>
+    );
   }
 }
 
