@@ -1,6 +1,7 @@
 # World Clock
 
-[Click here to see it live](https://world-clock-react.scotteau.now.sh/){:target="_blank"}
+[Click here to see it live](https://world-clock-react.scotteau.now.sh/)
+%md <a target="_blank" href="https://world-clock-react.scotteau.now.sh/">Click here to see it live</a>
 
 A React class component exercise built with `typescript` and `moment.js timezone`.
 
